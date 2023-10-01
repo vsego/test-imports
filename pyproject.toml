@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "test-imports"
+description = "A Python package for failing and mocking imports in automated tests"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name="Vedran Sego", email = "vsego@vsego.org" },
+]
+license = "MIT"
+classifiers = [
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Typing :: Typed",
+]
+keywords = []
+dynamic = ["version"]
+dependencies = [
+]
+
+[project.urls]
+"Homepage" = "https://github.com/vsego/test-imports"
+"Bug Tracker" = "https://github.com/vsego/test-imports/issues"
+"Changelog" = "https://github.com/vsego/test-imports/blob/master/CHANGELOG.md"
+
+[tool]
+
+[tool.hatch.version]
+path = "src/test_imports/version.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/test_imports"]
