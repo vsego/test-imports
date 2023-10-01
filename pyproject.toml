@@ -6,15 +6,15 @@ build-backend = "hatchling.build"
 name = "test-imports"
 description = "A Python package for failing and mocking imports in automated tests"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 authors = [
     { name="Vedran Sego", email = "vsego@vsego.org" },
 ]
 license = "MIT"
 classifiers = [
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Typing :: Typed",
 ]
 keywords = []
