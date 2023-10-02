@@ -20,6 +20,7 @@ classifiers = [
 keywords = []
 dynamic = ["version"]
 dependencies = [
+    "mypy-extensions",
 ]
 
 [project.urls]
