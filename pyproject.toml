@@ -17,9 +17,10 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Typing :: Typed",
 ]
-keywords = []
+keywords = ["test", "mock", "import"]
 dynamic = ["version"]
 dependencies = [
+    "mypy-extensions",
 ]
 
 [project.urls]
