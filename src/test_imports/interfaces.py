@@ -2,7 +2,7 @@
 Interface functions for the worker class.
 """
 
-from typing import Any, cast
+from typing import Any, cast, Pattern
 
 from .types import (
     T_input_module, T_input_hide_modules, T_exception, T_input_modules_mapping,
@@ -33,6 +33,8 @@ def fail_imports(
         easier debugging of failed modules.
     :return: Decorator or context manager used to fail import of `modules`.
     """
+    if isinstance(hide_modules, (str, Pattern)):
+        hide_modules = (hide_modules,)
     return TestImportsWorker(
         fail_modules=modules,
         hide_modules=hide_modules,
