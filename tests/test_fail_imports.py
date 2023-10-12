@@ -33,6 +33,16 @@ class TestFailImports(TestsBase):
             with self.assertRaises(TestException):
                 import tests.module1  # noqa: W0611
 
+    def test_context_manager_hide_modules_str(self) -> None:
+        # hide_modules should be a sequence of strings, but it's an easy enough
+        # mistake to make it a string, so we try to account for that.
+        import math  # noqa: W0611
+        self.assertTrue("math" in sys.modules)
+        with fail_imports("tests.module1", hide_modules="tests.module*"):
+            # Without treating this right, we'd hide `["t", "e",..., "*"]` and
+            # this would've hidden `math`.
+            self.assertTrue("math" in sys.modules)
+
     def test_context_manager_no_names(self) -> None:
         with self.assertRaises(ValueError):
             with fail_imports():

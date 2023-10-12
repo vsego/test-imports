@@ -96,6 +96,16 @@ class TestUtils(TestsBase):
         self.assertTrue(result is modules)
         self.assertEqual(kwargs, {"foo": "bar"})
 
+    def test_pop_hide_modules_str(self) -> None:
+        # This argument should not be a string, but it's an easy mistake to
+        # make, so we're accounting for it (without allowing it in type
+        # annotations).
+        module_name = "this.should.be.a.sequence.of.strings"
+        kwargs = {"hide_modules": module_name, "foo": "bar"}
+        result = pop_hide_modules("", kwargs)
+        self.assertEqual(result, (module_name,))
+        self.assertEqual(kwargs, {"foo": "bar"})
+
     def test_pop_hide_modules_wrong_type(self) -> None:
         with self.assertRaises(TypeError):
             pop_hide_modules("", {"hide_modules": object()})

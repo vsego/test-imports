@@ -103,7 +103,9 @@ def pop_hide_modules(
     This is an auxiliary function, used in :py:func:`interfaces.mock_imports`.
     """
     hide_modules_raw = kwargs.pop(f"{prefix}hide_modules", list())
-    if (
+    if isinstance(hide_modules_raw, (str, Pattern, ModuleType)):
+        return (hide_modules_raw,)
+    elif (
         isinstance(hide_modules_raw, Sequence)
         and all(
             isinstance(value, Pattern | str | ModuleType)
